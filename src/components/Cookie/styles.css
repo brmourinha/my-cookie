@@ -1,6 +1,19 @@
 .cookieStatus {
-  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .cookieStatus__total {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.cookieStatus__icon {
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+  text-decoration: none;
+  outline: none;
 }
