@@ -6,9 +6,10 @@ interface Props {
   item: IStoreItem;
   type: "addCursor" | "addGradma" | "addFarm" | "addMine";
   sumType: "sumCursor" | "sumGrandma" | "sumFarm" | "sumMine";
+  name: string;
 }
 
-const StoreItem = ({ item, type, sumType }: Props) => {
+const StoreItem = ({ item, type, sumType, name }: Props) => {
   const { state, dispatch } = useContext(CookieContext);
 
   let setCursorInterval: NodeJS.Timeout;
@@ -38,9 +39,9 @@ const StoreItem = ({ item, type, sumType }: Props) => {
       </button>
 
       <div className="item__container">
+        <h3>{name}</h3>
         <p>{`Price: ${item.price}`}</p>
         <p>{`Own: ${item.owned}`}</p>
-        <p>{`Production: ${item.production}ms`}</p>
       </div>
     </div>
   );
