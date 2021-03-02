@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from "react";
 import CookieFactory from "./pages/CookieFactory";
 
-interface IStoreItem {
+export interface IStoreItem {
   owned: number;
   price: number;
   production: number;
@@ -57,6 +57,42 @@ function reducer(state: IState, action: any) {
       };
     case "sumCursor":
       return { ...state, total: state.total + state.cursor.owned };
+    case "addGradma":
+      return {
+        ...state,
+        total: state.total - state.grandma.price,
+        grandma: {
+          ...state.grandma,
+          owned: state.grandma.owned + 1,
+          price: state.grandma.price + 10,
+        },
+      };
+    case "sumGrandma":
+      return { ...state, total: state.total + state.grandma.owned };
+    case "addFarm":
+      return {
+        ...state,
+        total: state.total - state.farm.price,
+        farm: {
+          ...state.farm,
+          owned: state.farm.owned + 1,
+          price: state.farm.price + 100,
+        },
+      };
+    case "sumFarm":
+      return { ...state, total: state.total + state.farm.owned };
+    case "addMine":
+      return {
+        ...state,
+        total: state.total - state.mine.price,
+        mine: {
+          ...state.mine,
+          owned: state.mine.owned + 1,
+          price: state.mine.price + 1000,
+        },
+      };
+    case "sumMine":
+      return { ...state, total: state.total + state.mine.owned };
     default:
       throw new Error();
   }
