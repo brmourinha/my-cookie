@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { CookieContext, IStoreItem } from "../../../App";
+import "./styles.css";
 
 interface Props {
   item: IStoreItem;
@@ -25,20 +26,21 @@ const StoreItem = ({ item, type, sumType }: Props) => {
       }, item.production);
     }
   }, [item]);
+
   return (
-    <div>
-      <div>
-        <button
-          disabled={state.total < item.price}
-          onClick={() => dispatch({ type })}
-        >
-          Add item
-        </button>
-      </div>
-      <div>
+    <div className="item">
+      <button
+        className="item__button"
+        disabled={state.total < item.price}
+        onClick={() => dispatch({ type })}
+      >
+        Add item
+      </button>
+
+      <div className="item__container">
         <p>{`Price: ${item.price}`}</p>
         <p>{`Own: ${item.owned}`}</p>
-        <p>{`Production: ${item.production / 100000}s`}</p>
+        <p>{`Production: ${item.production}ms`}</p>
       </div>
     </div>
   );
