@@ -16,13 +16,16 @@ const Cookie = (props: Props) => {
     production: 10000,
   });
 
+  let setCursorInterval: NodeJS.Timeout;
+
   const handleSum = () => {
-    setTotal((prevState) => prevState + 1);
+    setTotal((prevState) => prevState + cursor.own);
   };
 
   useEffect(() => {
+    clearInterval(setCursorInterval);
     if (cursor.own > 0) {
-      setInterval(() => {
+      setCursorInterval = setInterval(() => {
         handleSum();
       }, cursor.production);
     }
